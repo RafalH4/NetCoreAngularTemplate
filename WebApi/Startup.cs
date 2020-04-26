@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using WebApi.DataContext;
+using WebApi.Helpers;
+using WebApi.UserDirectory;
 
 namespace WebApi
 {
@@ -34,6 +36,11 @@ namespace WebApi
 
             services.AddSwaggerGen(opt =>
                 opt.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Api", Version = "v1" }));
+
+
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IJwtHandler, JwtHandler>();
 
         }
 
