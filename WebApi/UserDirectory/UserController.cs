@@ -5,13 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Helpers;
 using WebApi.UserDirectory.Dto;
 
 namespace WebApi.UserDirectory
 {
     [Route("[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UserController : ApiBaseController
     {
         private readonly IUserService _userService;
         public UserController(IUserService userService)
@@ -30,6 +31,7 @@ namespace WebApi.UserDirectory
         [HttpPost("registerAdmin")]
         public async Task<IActionResult> AddAdmin([FromBody]AddUserDto userDto)
         {
+            var a = CurrentUserId;
             await _userService.AddAdmin(userDto);
             return Ok();
         }
