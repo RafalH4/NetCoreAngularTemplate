@@ -128,5 +128,8 @@ E:\Projekty\ServicesApp\WebApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.L
 E:\Projekty\ServicesApp\WebApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 E:\Projekty\ServicesApp\WebApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
 E:\Projekty\ServicesApp\WebApi\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+E:\Projekty\ServicesApp\WebApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\Projekty\ServicesApp\WebApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+E:\Projekty\ServicesApp\WebApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 E:\Projekty\ServicesApp\WebApi\obj\Debug\netcoreapp3.1\WebApi.MvcApplicationPartsAssemblyInfo.cs
 E:\Projekty\ServicesApp\WebApi\obj\Debug\netcoreapp3.1\WebApi.MvcApplicationPartsAssemblyInfo.cache

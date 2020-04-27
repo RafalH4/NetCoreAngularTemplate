@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.UserDirectory.Dto;
@@ -25,12 +26,14 @@ namespace WebApi.UserDirectory
             return Ok();
         }
 
+        [Authorize(Policy = "admin")]
         [HttpPost("registerAdmin")]
         public async Task<IActionResult> AddAdmin([FromBody]AddUserDto userDto)
         {
             await _userService.AddAdmin(userDto);
             return Ok();
         }
+
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserLoginDto userLogin)
         {
@@ -40,6 +43,7 @@ namespace WebApi.UserDirectory
                 token = token
             });
         }
+
         [HttpGet("allClients")]
         public async Task<IActionResult> AllClients()
         {

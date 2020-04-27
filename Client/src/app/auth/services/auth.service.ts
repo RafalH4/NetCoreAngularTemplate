@@ -58,7 +58,10 @@ export class AuthService {
 
   hasRole(role: string) {
     const token = this.jwtHelper.decodeToken(this.getToken())
-    return token.role === role;
+    if(token)
+      return token.role === role;
+      else
+      return false
   }
 
 

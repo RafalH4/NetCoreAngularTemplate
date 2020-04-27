@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using WebApi.DataContext;
 using WebApi.Helpers;
 using WebApi.UserDirectory;
@@ -37,6 +40,23 @@ namespace WebApi
             services.AddSwaggerGen(opt =>
                 opt.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Api", Version = "v1" }));
 
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddJwtBearer(opt =>
+             {
+                 opt.TokenValidationParameters = new TokenValidationParameters
+                 {
+                     ValidateIssuerSigningKey = true,
+                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
+                     ValidateIssuer = false,
+                     ValidateAudience = false
+                 };
+             });
+            services.AddAuthorization(opt =>
+            {
+                opt.AddPolicy("admin", policy => policy.RequireRole("admin"));
+                opt.AddPolicy("client", policy => policy.RequireRole("client"));
+            });
+
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
@@ -59,7 +79,7 @@ namespace WebApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
