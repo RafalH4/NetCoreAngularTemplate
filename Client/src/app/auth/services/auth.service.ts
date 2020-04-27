@@ -12,31 +12,26 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  baseUrl: string = 'https://localhost:44390/user'
-  decodedToken: any
+  baseUrl: string = 'https://localhost:44300/User'
   public currentUser: Observable<User>
-  
+
 
   constructor(private http: HttpClient,
     private cookieService: CookieService,
     private jwtHelper: JwtHelperService,
     private router: Router) { }
 
-  login(model: FormGroup){
-    return this.http.post(this.baseUrl+'/login', model)
+  login(model: FormGroup) {
+    return this.http.post(this.baseUrl + '/login', model)
       .pipe(
-        map((response : any) =>{
+        map((response: any) => {
           this.cookieService.set('token', response.token);
-          this.decodedToken = this.jwtHelper.decodeToken(response.token);
-          console.log(this.decodedToken);
-          
         })
       )
-    
   }
 
-  logout(){
-    if(!this.cookieService.get('token')) {
+  logout() {
+    if (!this.cookieService.get('token')) {
       alert("Nie jesteś zalogowany")
       return 0;
     }
@@ -45,11 +40,14 @@ export class AuthService {
     this.router.navigate(['']);
   }
 
-  register(model : FormGroup){
-    return this.http.post(this.baseUrl+'/register',  model)
+  registerClient(model: FormGroup) {
+    return this.http.post(this.baseUrl + '/registerClient', model)
+  }
+  registerAdmin(model: FormGroup) {
+    return this.http.post(this.baseUrl + '/registerAdmin', model)
   }
 
- getToken(){
+  getToken() {
     return this.cookieService.get('token');
   }
 
@@ -57,6 +55,12 @@ export class AuthService {
     const token = this.cookieService.get('token');
     return !this.jwtHelper.isTokenExpired(token);
   }
+
+  hasRole(role: string) {
+    const token = this.jwtHelper.decodeToken(this.getToken())
+    return token.role === role;
+  }
+
 
 
 

@@ -12,19 +12,31 @@ export class RegisterComponent implements OnInit {
   form: FormGroup
 
   constructor(private fb: FormBuilder,
-    private http: AuthService) { }
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required]
     })
   }
 
   register(){
-    return this.http.register(this.form.value).subscribe(resp =>{
+    return this.authService.registerClient(this.form.value).subscribe(resp =>{
       console.log(resp)
     })
+  }
+
+  registerAsAdmin(){
+    return this.authService.registerAdmin(this.form.value).subscribe(resp =>{
+      console.log(resp)
+    })
+  }
+  isAdmin():boolean
+  {
+    return this.authService.hasRole("admin");
   }
 
 }
