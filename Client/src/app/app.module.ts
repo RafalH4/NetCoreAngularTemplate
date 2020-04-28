@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
@@ -8,8 +7,8 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
 import { CookieService} from 'ngx-cookie-service'
 import { JwtHelperService, JwtModule, JWT_OPTIONS } from "@auth0/angular-jwt";
 import { AuthService } from './auth/services/auth.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ReqInterceptor } from './auth/services/ReqInterceptor';
+import { HttpHeaderInterceptor } from './auth/services/ReqInterceptor';
+import { ErrorInterceptorProvider } from './auth/services/ErrorInterceptor';
 
 
 export function jwtOptionsFactory(cookie: CookieService) {
@@ -42,11 +41,8 @@ export function jwtOptionsFactory(cookie: CookieService) {
     AuthService,
     JwtHelperService,
     CookieService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ReqInterceptor,
-      multi: true
-    }
+    HttpHeaderInterceptor,
+    ErrorInterceptorProvider
   ],
   bootstrap: [AppComponent]
 })

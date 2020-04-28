@@ -23,7 +23,7 @@ namespace WebApi.UserDirectory
         {
             var userFromDb = await _userRepository.GetUserByEmail(userDto.Email);
             if (userFromDb != null)
-                throw new Exception("Bad user");
+                throw new Exception("Db contains this email ");
 
             var hmac = new HMACSHA512();
 
@@ -42,7 +42,7 @@ namespace WebApi.UserDirectory
         {
             var userFromDb = await _userRepository.GetUserByEmail(userDto.Email);
             if (userFromDb != null)
-                throw new Exception("Bad user");
+                throw new Exception("Db contains this email ");
 
             var hmac = new HMACSHA512();
 
@@ -83,7 +83,7 @@ namespace WebApi.UserDirectory
         {
             var userFromDb = await _userRepository.GetUserByEmail(userLogin.Email);
             if (userFromDb == null)
-                throw new Exception("No user");
+                throw new Exception("Bad email");
             if (!userFromDb.CheckPassword(userLogin.Password))
                 throw new Exception("Bad password");
 
