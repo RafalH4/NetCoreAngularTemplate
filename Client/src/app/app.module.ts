@@ -32,7 +32,7 @@ export function jwtOptionsFactory(cookie: CookieService) {
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,
         useFactory: jwtOptionsFactory,
-        deps: [CookieService]
+        deps: [CookieService] 
       }
     })
   ],

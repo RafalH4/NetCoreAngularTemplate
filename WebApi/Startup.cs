@@ -64,6 +64,8 @@ namespace WebApi
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
+
+            services.AddScoped<IEmailSender, EmailSender>();
             services.AddScoped<IJwtHandler, JwtHandler>();
 
         }
