@@ -13,11 +13,14 @@ namespace WebApi.UserDirectory
     {
         private readonly IUserRepository _userRepository;
         private readonly IJwtHandler _jwtHandler;
+        private readonly IEmailSender _emailSender;
         public UserService(IUserRepository userRepository,
-             IJwtHandler jwtHandler)
+             IJwtHandler jwtHandler,
+             IEmailSender emailSender)
         {
             _userRepository = userRepository;
             _jwtHandler = jwtHandler;
+            _emailSender = emailSender;
         }
         public async Task AddAdmin(AddUserDto userDto)
         {
@@ -32,9 +35,10 @@ namespace WebApi.UserDirectory
                 Id = Guid.NewGuid(),
                 Email = userDto.Email,
                 PasswordSalt = hmac.Key,
-                PasswordHash = hmac.ComputeHash(Encoding.ASCII.GetBytes(userDto.Password))
+                PasswordHash = hmac.ComputeHash(Encoding.ASCII.GetBytes(userDto.Password)),
+                IsActive = false
             };
-
+            _emailSender.SendConfirmationEmain("Jan", "Kowalski", newUser.Email, newUser.Id);
             await _userRepository.AddUser(newUser);
         }
 
@@ -51,9 +55,10 @@ namespace WebApi.UserDirectory
                 Id = Guid.NewGuid(),
                 Email = userDto.Email,
                 PasswordSalt = hmac.Key,
-                PasswordHash = hmac.ComputeHash(Encoding.ASCII.GetBytes(userDto.Password))
+                PasswordHash = hmac.ComputeHash(Encoding.ASCII.GetBytes(userDto.Password)),
+                IsActive = false    
             };
-
+            _emailSender.SendConfirmationEmain("Jan", "Kowalski", newUser.Email, newUser.Id);
             await _userRepository.AddUser(newUser);
         }
 
@@ -86,8 +91,20 @@ namespace WebApi.UserDirectory
                 throw new Exception("Bad email");
             if (!userFromDb.CheckPassword(userLogin.Password))
                 throw new Exception("Bad password");
+            if (!userFromDb.IsActive)
+                throw new Exception("Not activated account");
 
             return _jwtHandler.CreateToken(userFromDb);
+        }
+
+        public async Task ActivateAccount(string email, Guid id)
+        {
+            var userFromDb = await _userRepository.GetUserById(id);
+            if (userFromDb == null || userFromDb.Email != email)
+                throw new Exception("Bad activation");
+            userFromDb.IsActive = true;
+            await _userRepository.UpdateUser(userFromDb);
+
         }
     }
 }

@@ -31,8 +31,13 @@ namespace WebApi.UserDirectory
         [HttpPost("registerAdmin")]
         public async Task<IActionResult> AddAdmin([FromBody]AddUserDto userDto)
         {
-            var a = CurrentUserId;
             await _userService.AddAdmin(userDto);
+            return Ok();
+        }
+        [HttpPut("confirmAccount/{email}/{id}")]
+        public async Task<IActionResult> ConfirmAccount(string email, Guid id)
+        {
+            await _userService.AddClient(userDto);
             return Ok();
         }
 

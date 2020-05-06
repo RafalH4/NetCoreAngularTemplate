@@ -7,6 +7,6 @@ namespace WebApi.Helpers
 {
     public interface IEmailSender
     {
-        public void SendConfirmationEmain();
+        public void SendConfirmationEmain(string firstName, string secondName, string email, Guid id);
     }
 }

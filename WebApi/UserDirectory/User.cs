@@ -15,5 +15,7 @@ namespace WebApi.UserDirectory
         public byte[] PasswordSalt { get; set; }
         public DateTime CreatedAt { get; set; }
         public string Role { get; set; }
+        public bool IsActive { get; set; }
+        public string RecoveryKey { get; set; }
     }
 }
