@@ -6,6 +6,7 @@ import { ResetComponent } from './reset/reset.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ActivateAccComponent } from './activate-acc/activate-acc.component';
 
 
 
@@ -13,7 +14,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   declarations: [
     LoginComponent, 
     RegisterComponent, 
-    ResetComponent
+    ResetComponent, ActivateAccComponent
   ],
   imports: [
     CommonModule,
