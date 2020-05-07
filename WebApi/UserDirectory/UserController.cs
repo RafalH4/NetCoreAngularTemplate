@@ -34,10 +34,10 @@ namespace WebApi.UserDirectory
             await _userService.AddAdmin(userDto);
             return Ok();
         }
-        [HttpPut("confirmAccount/{email}/{id}")]
-        public async Task<IActionResult> ConfirmAccount(string email, Guid id)
+        [HttpPut("activateAccount")]
+        public async Task<IActionResult> ConfirmAccount([FromBody] ActivateUser activationData )
         {
-            await _userService.AddClient(userDto);
+            await _userService.ActivateAccount(activationData.Email, activationData.ActivateKey);
             return Ok();
         }
 

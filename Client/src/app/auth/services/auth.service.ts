@@ -43,8 +43,14 @@ export class AuthService {
   registerClient(model: FormGroup) {
     return this.http.post(this.baseUrl + '/registerClient', model)
   }
+
   registerAdmin(model: FormGroup) {
     return this.http.post(this.baseUrl + '/registerAdmin', model)
+  }
+  
+  activateAccount(model: FormGroup) {
+    console.log(model)
+    return this.http.put(this.baseUrl+"/activateAccount",model )
   }
 
   getToken() {

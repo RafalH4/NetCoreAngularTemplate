@@ -97,10 +97,10 @@ namespace WebApi.UserDirectory
             return _jwtHandler.CreateToken(userFromDb);
         }
 
-        public async Task ActivateAccount(string email, Guid id)
+        public async Task ActivateAccount(string email, string id)
         {
-            var userFromDb = await _userRepository.GetUserById(id);
-            if (userFromDb == null || userFromDb.Email != email)
+            var userFromDb = await _userRepository.GetUserByEmail(email);
+            if (userFromDb == null || userFromDb.Id.ToString() != id)
                 throw new Exception("Bad activation");
             userFromDb.IsActive = true;
             await _userRepository.UpdateUser(userFromDb);

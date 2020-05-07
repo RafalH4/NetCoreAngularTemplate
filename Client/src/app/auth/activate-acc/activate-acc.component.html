@@ -1,3 +1,19 @@
 <p>activate-acc works!</p>
+<form [formGroup]="activateForm">
+    <fieldset>
+        <legend>Activate Account</legend>
+        <div class="form-field">
+            <label>Email:</label>
+            <input name="email" formControlName="email">
+        </div>
+        <div class="form-field">
+            <label>Activate Key:</label>
+            <input name="activateKey" formControlName="activateKey">
+        </div>
+    </fieldset>
+    <div class="form-buttons">
+        <button (click)="activate()"></button>
+    </div>
+</form>
 email: {{email}}
 key: {{key}}

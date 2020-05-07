@@ -10,7 +10,7 @@ namespace WebApi.UserDirectory
     {
         Task AddClient(AddUserDto userDto);
         Task AddAdmin(AddUserDto userDto);
-        Task ActivateAccount(string email, Guid id);
+        Task ActivateAccount(string email, string id);
         Task RemoveUser(Guid id);
         Task UpdateUser(UpdateUserDto userDto);
         Task ChangePassword(ChangePasswordDto password);
