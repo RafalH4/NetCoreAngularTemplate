@@ -13,6 +13,7 @@ export class ActivateAccComponent implements OnInit {
   activateForm: FormGroup
   email: string
   key: string
+  isActivated : boolean
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
     private _authService: AuthService) { }
@@ -31,7 +32,7 @@ export class ActivateAccComponent implements OnInit {
 
   activate(){
     this._authService.activateAccount(this.activateForm.value).subscribe(
-      response => console.log("Udało się"),
+      () => this.isActivated=true,
       error => console.log(error) 
     )
   }

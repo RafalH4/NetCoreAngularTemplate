@@ -15,5 +15,7 @@
         <button (click)="activate()"></button>
     </div>
 </form>
-email: {{email}}
-key: {{key}}
+<div *ngIf="isActivated">
+    Konto zostało aktywowane
+</div>
+
