@@ -17,5 +17,6 @@ namespace WebApi.UserDirectory
         public string Role { get; set; }
         public bool IsActive { get; set; }
         public string RecoveryKey { get; set; }
+        public string AwatarUrl { get; set; }
     }
 }

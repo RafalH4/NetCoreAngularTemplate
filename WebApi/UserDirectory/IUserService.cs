@@ -9,6 +9,7 @@ namespace WebApi.UserDirectory
     public interface IUserService
     {
         Task AddClient(AddUserDto userDto);
+        Task AddEnterpreneur(AddUserDto userDto);
         Task AddAdmin(AddUserDto userDto);
         Task ActivateAccount(string email, string id);
         Task ResetPassword(string email);

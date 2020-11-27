@@ -30,9 +30,11 @@ namespace WebApi.UserDirectory
 
             var hmac = new HMACSHA512();
 
-            var newUser = new UserAdmin
+            var newUser = new Veteran
             {
                 Id = Guid.NewGuid(),
+                FirstName = userDto.FirstName,
+                LastName = userDto.LastName,
                 Email = userDto.Email,
                 PasswordSalt = hmac.Key,
                 PasswordHash = hmac.ComputeHash(Encoding.ASCII.GetBytes(userDto.Password)),
@@ -41,7 +43,28 @@ namespace WebApi.UserDirectory
             _emailSender.SendConfirmationEmain("Jan", "Kowalski", newUser.Email, newUser.Id);
             await _userRepository.AddUser(newUser);
         }
+        
+        public async Task AddEnterpreneur(AddUserDto userDto)
+        {
+            var userFromDb = await _userRepository.GetUserByEmail(userDto.Email);
+            if (userFromDb != null)
+                throw new Exception("Db contains this email ");
 
+            var hmac = new HMACSHA512();
+
+            var newUser = new Enterpreneur
+            {
+                Id = Guid.NewGuid(),
+                FirstName = userDto.FirstName,
+                LastName = userDto.LastName,
+                Email = userDto.Email,
+                PasswordSalt = hmac.Key,
+                PasswordHash = hmac.ComputeHash(Encoding.ASCII.GetBytes(userDto.Password)),
+                IsActive = false
+            };
+            // _emailSender.SendConfirmationEmain("Jan", "Kowalski", newUser.Email, newUser.Id);
+            await _userRepository.AddUser(newUser);
+        }
         public async Task AddClient(AddUserDto userDto)
         {
             var userFromDb = await _userRepository.GetUserByEmail(userDto.Email);
@@ -50,15 +73,19 @@ namespace WebApi.UserDirectory
 
             var hmac = new HMACSHA512();
 
-            var newUser = new UserClient
+            var newUser = new Veteran
             {
                 Id = Guid.NewGuid(),
                 Email = userDto.Email,
+                FirstName = userDto.FirstName,
+                LastName = userDto.LastName,
                 PasswordSalt = hmac.Key,
                 PasswordHash = hmac.ComputeHash(Encoding.ASCII.GetBytes(userDto.Password)),
-                IsActive = false    
+                IsActive = false,
+                Pesel = userDto.Pesel,
+                VeteranCardNumber = userDto.VeteranCardNumber
             };
-            _emailSender.SendConfirmationEmain("Jan", "Kowalski", newUser.Email, newUser.Id);
+           // _emailSender.SendConfirmationEmain("Jan", "Kowalski", newUser.Email, newUser.Id);
             await _userRepository.AddUser(newUser);
         }
 
@@ -91,9 +118,9 @@ namespace WebApi.UserDirectory
                 throw new Exception("Bad email");
             if (!userFromDb.CheckPassword(userLogin.Password))
                 throw new Exception("Bad password");
-            if (!userFromDb.IsActive)
+            /*if (!userFromDb.IsActive)
                 throw new Exception("Not activated account");
-
+            */
             return _jwtHandler.CreateToken(userFromDb);
         }
 
@@ -105,6 +132,11 @@ namespace WebApi.UserDirectory
             userFromDb.IsActive = true;
             await _userRepository.UpdateUser(userFromDb);
 
+        }
+
+        public Task ResetPassword(string email)
+        {
+            throw new NotImplementedException();
         }
     }
 }

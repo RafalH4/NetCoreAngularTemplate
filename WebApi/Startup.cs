@@ -18,9 +18,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using WebApi.AwardDirectory;
+using WebApi.BusinessRatingsDirectory;
 using WebApi.DataContext;
+using WebApi.EnterpreneurSaleDirectory;
 using WebApi.Helpers;
 using WebApi.UserDirectory;
+using WebApi.VeteranAwardDirectory;
+using WebApi.VeteranSaleDirectory;
 
 namespace WebApi
 {
@@ -46,6 +51,7 @@ namespace WebApi
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
              .AddJwtBearer(opt =>
+
              {
                  opt.TokenValidationParameters = new TokenValidationParameters
                  {
@@ -67,6 +73,24 @@ namespace WebApi
 
             services.AddScoped<IEmailSender, EmailSender>();
             services.AddScoped<IJwtHandler, JwtHandler>();
+
+            services.AddScoped<IVeteranSaleService, VeteranSaleService>();
+            services.AddScoped<IVeteranSaleRepository, VeteranSaleRepository>();
+
+            services.AddScoped<IEnterpreneurSaleService, EnterpreneurSaleService>();
+            services.AddScoped<IEnterpreneurSaleRepository, EnterpreneurSaleRepository>();
+
+            services.AddScoped<IAwardService, AwardService>();
+            services.AddScoped<IAwardRepository, AwardRepository>();
+
+            services.AddScoped<IVeteranAwardService, VeteranAwardService>();
+            services.AddScoped<IVeteranAwardRepository, VeteranAwardRepository>();
+
+            services.AddScoped<IBusinessRatingsService, BusinessRatingsService>();
+            services.AddScoped<IBusinessRatingsRepository, BusinessRatingsRepository>();
+
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
         }
 

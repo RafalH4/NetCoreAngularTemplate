@@ -20,20 +20,31 @@ namespace WebApi.UserDirectory
             _userService = userService;
         }
 
-        [HttpPost("registerClient")]
+
+
+        [HttpPost("registerVeteran")]
         public async Task<IActionResult> AddClient([FromBody]AddUserDto userDto)
         {
             await _userService.AddClient(userDto);
             return Ok();
         }
 
-        [Authorize(Policy = "admin")]
-        [HttpPost("registerAdmin")]
+        //[Authorize(Policy = "admin")]
+        [HttpPost("registerVeteranCenter")]
         public async Task<IActionResult> AddAdmin([FromBody]AddUserDto userDto)
         {
             await _userService.AddAdmin(userDto);
             return Ok();
         }
+
+        [HttpPost("registerEnterpreneur")]
+        public async Task<IActionResult> AddEnterpreneur([FromBody] AddUserDto userDto)
+        {
+            await _userService.AddEnterpreneur(userDto);
+            return Ok();
+        }
+
+
         [HttpPut("activateAccount")]
         public async Task<IActionResult> ConfirmAccount([FromBody] ActivateUser activationData )
         {
