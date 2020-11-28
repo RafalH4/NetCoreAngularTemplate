@@ -10,5 +10,6 @@ namespace WebApi.VeteranOrganizationDirectory
     {
         Task AddVeteranToOrganization(AddVeteranOrganization addVeteranAward);
         Task<IEnumerable<GetVeteran>> GetVeteransByOrgId(Guid idOrg);
+        Task <IEnumerable<GetOrganizationsDto>>GetOrganizations(Guid id);
     }
 }

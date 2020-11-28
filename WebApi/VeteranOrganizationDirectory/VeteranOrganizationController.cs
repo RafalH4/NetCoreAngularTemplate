@@ -30,5 +30,11 @@ namespace WebApi.VeteranOrganizationDirectory
             var result = await _veteranOrganizationService.GetVeteransByOrgId(idOrg);
             return Ok(result);
         }
+        [HttpGet("getOrganizations")]
+        public async Task<IActionResult> GetOrganizations()
+        {
+            var result = await _veteranOrganizationService.GetOrganizations(CurrentUserId);
+            return Ok(result);
+        }
     }
 }

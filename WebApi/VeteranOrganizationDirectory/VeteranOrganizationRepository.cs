@@ -27,6 +27,9 @@ namespace WebApi.VeteranOrganizationDirectory
         => await Task.FromResult(_context.Organizations.FirstOrDefault(
                 org => org.Id == id));
 
+        public async Task<IEnumerable<Organization>> GetOrganizations(Guid id)
+        => await Task.FromResult(_context.VeteranOrganizations.Where(v=>v.Id==id).Select(o => o.Organization).ToList());
+
         public async Task<Veteran> GetVeteranById(Guid id)
         => await Task.FromResult(_context.Veterans.FirstOrDefault(
                 vet => vet.Id == id));

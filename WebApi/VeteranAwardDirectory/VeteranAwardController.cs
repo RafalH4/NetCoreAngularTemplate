@@ -24,6 +24,12 @@ namespace WebApi.VeteranAwardDirectory
             await _veteranAwardService.AddVeteranAward(addVeteranAward);
             return Ok();
         }
+        [HttpGet("getVeteranAwards")]
+        public async Task<IActionResult> GetVeteranAvards()
+        {
+            var x = await _veteranAwardService.GetVeteranAvards(CurrentUserId);
+            return Ok(x);
+        }
 
     }
 }
