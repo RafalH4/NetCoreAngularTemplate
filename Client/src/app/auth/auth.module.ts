@@ -7,6 +7,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ActivateAccComponent } from './activate-acc/activate-acc.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -22,6 +23,7 @@ import { ActivateAccComponent } from './activate-acc/activate-acc.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    RouterModule,
   ]
 })
 export class AuthModule { }
