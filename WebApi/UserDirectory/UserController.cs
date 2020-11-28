@@ -20,8 +20,6 @@ namespace WebApi.UserDirectory
             _userService = userService;
         }
 
-
-
         [HttpPost("registerVeteran")]
         public async Task<IActionResult> AddClient([FromBody]AddUserDto userDto)
         {
@@ -62,11 +60,50 @@ namespace WebApi.UserDirectory
             });
         }
 
+        [HttpPost("addFriend")]
+        public async Task<IActionResult> AddFriend([FromBody] Guid id)
+        {
+            
+            await _userService.AddFriend(id, CurrentUserId);
+            return Ok();
+        }
+
         [HttpGet("allClients")]
         public async Task<IActionResult> AllClients()
         {
             var users = await _userService.GetUsers();
             return Ok(users);
+        }
+        [HttpGet("getFriends/{idVeteran}")]
+        public async Task<IActionResult> AllClients(Guid idVeteran)
+        {
+            var friends = await _userService.GetFriends(idVeteran);
+            return Ok(friends);
+        }
+
+        [HttpGet("GetAllVeterans")]
+        public async Task<IActionResult> AllVeterans()
+        {
+            var veterans = await _userService.GetVeterans();
+            return Ok(veterans);
+        }
+        [HttpGet("GetInactiveVeterans")]
+        public async Task<IActionResult> AllVeteransInActtve()
+        {
+            var veterans = await _userService.GetInactiveVeterans();
+            return Ok(veterans);
+        }
+        [HttpGet("GetVeteranById/{id}")]
+        public async Task<IActionResult> GetVeteran(Guid id)
+        {
+            var veteran = await _userService.GetVeteran(id);
+            return Ok(veteran);
+        }
+        [HttpGet("GetEnterpreneursByBusinessId/{id}")]
+        public async Task<IActionResult> GetEnterpreneurs(Guid id)
+        {
+            var enterpreneurs = await _userService.GetEnterpreneurs(id);
+            return Ok(enterpreneurs);
         }
     }
 }

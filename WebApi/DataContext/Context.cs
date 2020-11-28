@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,11 @@ namespace WebApi.DataContext
             .HasValue<VeteranCenter>("veteransCenter")
             .HasValue<Enterpreneur>("enterpreneur");
             builder.Entity<Veteran>().HasMany(s => s.BusinessRatings).WithOne(s => s.Veteran);
+            var converter = new EnumToStringConverter<Category>();
+            builder
+                .Entity<Business>()
+                .Property(e => e.Category)
+                .HasConversion(converter);
         }
     }
 }

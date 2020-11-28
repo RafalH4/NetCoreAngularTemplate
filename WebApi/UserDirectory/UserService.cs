@@ -138,5 +138,99 @@ namespace WebApi.UserDirectory
         {
             throw new NotImplementedException();
         }
+
+        public async Task<IEnumerable<GetVeteran>> GetVeterans()
+        {
+
+            var veteran = await _userRepository.GetVeterans();
+            return veteran.Select(veteran => new GetVeteran()
+            {
+                Id = veteran.Id,
+                Email = veteran.Email,
+                FirstName = veteran.FirstName,
+                LastName = veteran.LastName,
+                Pesel = veteran.Pesel,
+                AwatarUrl = veteran.AwatarUrl,
+                CreatedAt = veteran.CreatedAt,
+                DamageToHealth = veteran.DamageToHealth,
+                VeteranCardNumber = veteran.VeteranCardNumber,
+                IsActive = veteran.IsActive
+            });
+        }
+
+        public async Task<IEnumerable<GetVeteran>> GetInactiveVeterans()
+        {
+            var veteran = await _userRepository.GetInactiveVeterans();
+            return veteran.Select(veteran => new GetVeteran()
+            {
+                Id = veteran.Id,
+                Email = veteran.Email,
+                FirstName = veteran.FirstName,
+                LastName = veteran.LastName,
+                Pesel = veteran.Pesel,
+                AwatarUrl = veteran.AwatarUrl,
+                CreatedAt = veteran.CreatedAt,
+                DamageToHealth = veteran.DamageToHealth,
+                VeteranCardNumber = veteran.VeteranCardNumber,
+                IsActive = veteran.IsActive
+            });
+        }
+
+        public async Task<GetVeteran> GetVeteran(Guid id)
+        {
+            var veteran = await _userRepository.GetVeteranById(id);
+            return new GetVeteran()
+            {
+                Id = veteran.Id,
+                FirstName = veteran.FirstName,
+                LastName = veteran.LastName,
+                Pesel = veteran.Pesel,
+                VeteranCardNumber = veteran.VeteranCardNumber,
+                AwatarUrl = veteran.AwatarUrl,
+                CreatedAt = veteran.CreatedAt,
+                IsActive = veteran.IsActive,
+                DamageToHealth = veteran.DamageToHealth,
+                Email = veteran.Email
+            };
+        }
+
+        public async Task<IEnumerable<GetEnterpreneur>> GetEnterpreneurs(Guid id)
+        {
+            var enterpreneurs = await _userRepository.GetEnterpreneurs(id);
+            return enterpreneurs.Select(enterpreneurs => new GetEnterpreneur()
+            {
+                FirstName = enterpreneurs.FirstName,
+                LastName = enterpreneurs.LastName,
+                Id = enterpreneurs.Id,
+                AwatarUrl = enterpreneurs.AwatarUrl,
+                CreatedAt = enterpreneurs.CreatedAt,
+                Email = enterpreneurs.Email,
+                IsActive = enterpreneurs.IsActive
+            });
+        }
+
+        public async Task AddFriend(Guid idF, Guid idV)
+        {
+            var friend = await _userRepository.GetVeteranById(idF);
+            var veteran = await _userRepository.GetVeteranWithFriendById(idV);
+            if (veteran.Friends.Select(x => x.Id).Contains(friend.Id))
+                throw new Exception("Is your friend already");
+            veteran.Friends.Add(friend);
+            await _userRepository.AddFriend(veteran);
+        }
+
+        public async Task<IEnumerable<GetFriendDto>> GetFriends(Guid id)
+        {
+            var veteran = await _userRepository.GetFriends(id);
+            return veteran.Friends.Select(friends => new GetFriendDto ()
+            {
+                Id = friends.Id,
+                FirstName = friends.FirstName,
+                LastName = friends.LastName,
+                AwatarUrl = friends.AwatarUrl,
+                DamageToHealth = friends.DamageToHealth,
+                Email = friends.Email
+            });
+        }
     }
 }

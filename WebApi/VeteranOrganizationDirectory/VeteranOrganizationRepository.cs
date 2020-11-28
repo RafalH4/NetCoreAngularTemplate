@@ -30,5 +30,9 @@ namespace WebApi.VeteranOrganizationDirectory
         public async Task<Veteran> GetVeteranById(Guid id)
         => await Task.FromResult(_context.Veterans.FirstOrDefault(
                 vet => vet.Id == id));
+
+        public async Task<IEnumerable<Veteran>> GetVeteransByOrgId(Guid idOrg)
+        => await Task.FromResult(_context.VeteranOrganizations.Where(org => org.Organization.Id == idOrg).Select(org=>org.Veteran).ToList());
+
     }
 }

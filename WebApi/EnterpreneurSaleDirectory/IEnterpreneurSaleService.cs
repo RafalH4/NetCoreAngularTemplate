@@ -13,5 +13,7 @@ namespace WebApi.EnterpreneurSaleDirectory
         Task AddOffer(AddEnterpreneurOffer newOffer, Guid id);
         Task<IEnumerable<EnterpreneurSale>> GetEnterpreneurOffers();
         Task<GetEnterpreneurOffer> GetEnterpreneurOffersById(Guid id);
+        Task<IEnumerable<DiscountsWithStatisticsDto>>GetEnterpreneurSalesWithStatistics();
+        Task<DiscountWithStatisticsDto> GetEnterpreneurSaleWithStatistics(Guid id);
     }
 }

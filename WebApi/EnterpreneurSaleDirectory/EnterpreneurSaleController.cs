@@ -32,6 +32,18 @@ namespace WebApi.EnterpreneurSaleDirectory
             var enterpreneurSales = await _enterpreneurSaleService.GetEnterpreneurOffers();
             return Ok(enterpreneurSales);
         }
+        [HttpGet("getEnterpreneurSalesWithStatistics")]
+        public async Task<IActionResult> GetEnterpreneurSalesWithStatistics()
+        {
+            var enterpreneurSales = await _enterpreneurSaleService.GetEnterpreneurSalesWithStatistics();
+            return Ok(enterpreneurSales);
+        }
+        [HttpGet("getEnterpreneurSaleWithStatistics/{saleId}")]
+        public async Task<IActionResult> GetEnterpreneurSalesWithStatistics(Guid saleId)
+        {
+            var enterpreneurSale = await _enterpreneurSaleService.GetEnterpreneurSaleWithStatistics(saleId);
+            return Ok(enterpreneurSale);
+        }
         [HttpGet("getEnterpreneurSaleById/{id}")]
         public async Task<IActionResult> GetEnterpreneurSalesById(Guid id)
         {

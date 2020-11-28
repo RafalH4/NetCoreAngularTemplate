@@ -12,6 +12,7 @@ namespace WebApi.UserDirectory
 {
     public class Veteran: User
     {
+        public List<Veteran> Friends { get; set; }
         public int DamageToHealth { get; set; }
         public long Pesel { get; set; }
         public string VeteranCardNumber { get; set; }

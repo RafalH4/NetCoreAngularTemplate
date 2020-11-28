@@ -19,5 +19,11 @@ namespace WebApi.UserDirectory
         Task<User> GetUser(Guid id);
         Task<IEnumerable<User>> GetUsers();
         Task<string> Login(UserLoginDto userLogin);
+        Task<IEnumerable<GetVeteran>> GetVeterans();
+        Task<IEnumerable<GetVeteran>> GetInactiveVeterans();
+        Task<GetVeteran> GetVeteran(Guid id);
+        Task<IEnumerable<GetEnterpreneur>> GetEnterpreneurs(Guid id);
+        Task AddFriend(Guid idFriend, Guid idVeteran);
+        Task<IEnumerable<GetFriendDto>> GetFriends(Guid id);
     }
 }

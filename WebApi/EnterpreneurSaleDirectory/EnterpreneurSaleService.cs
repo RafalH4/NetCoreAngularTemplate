@@ -66,6 +66,36 @@ namespace WebApi.EnterpreneurSaleDirectory
             };
         }
 
+        public async Task<IEnumerable<DiscountsWithStatisticsDto>> GetEnterpreneurSalesWithStatistics()
+        {
+            var discounts = await _enterpreneurSaleRepository.GetEnterpreneurSalesWithStatistics();
 
+            return discounts.Select(discounts => new DiscountsWithStatisticsDto()
+            {
+                Address = discounts.Business.Address,
+                BusinessName = discounts.Business.BusinessName,
+                Discount = discounts.Discount,
+                DiscountID = discounts.Id,
+                Lattitude = discounts.Business.Lattitude,
+                Longitude = discounts.Business.Longitude,
+                PhotoUrl = discounts.Business.PhotoUrl,
+                AverageRate = _enterpreneurSaleRepository.GetRatingsByBusinessId(discounts.Business.Id).Result.Average()
+            }); ;
+        }
+
+        public async Task<DiscountWithStatisticsDto> GetEnterpreneurSaleWithStatistics(Guid id)
+        {
+            var discount = await _enterpreneurSaleRepository.GetEnterpreneurSaleWithStatistics(id);
+            return new DiscountWithStatisticsDto()
+            {
+                Discount = discount.Discount,
+                Description = discount.SaleDescription,
+                BusinessName = discount.Business.BusinessName,
+                PhotoUrl = discount.Business.PhotoUrl,
+                AverageRate = _enterpreneurSaleRepository.GetRatingsByBusinessId(discount.Business.Id).Result.Average(),
+                RatingCount = _enterpreneurSaleRepository.GetRatingCount(discount.Business.Id).Result.Count(),
+                DiscountID = discount.Id
+            };
+        }
     }
 }

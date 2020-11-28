@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -49,10 +50,20 @@ namespace WebApi.EnterpreneurSaleDirectory
             var x = _context.EnterpreneurSales.Where(c => c.Id == id).Select(x => x.Business).FirstOrDefault();
             return x;
         }
+
+        public async Task<IEnumerable<EnterpreneurSale>> GetEnterpreneurSalesWithStatistics()
+            => await  Task.FromResult(_context.EnterpreneurSales
+                .Include(s => s.Business)
+                .ToList());
+
+        public async Task<List<int>> GetRatingsByBusinessId(Guid BusinessID)
+            => await Task.FromResult(_context.BusinessesRatings.Where(s => s.Business.Id == BusinessID).Select(s => s.Rate).ToList());
+
+        public async Task<EnterpreneurSale> GetEnterpreneurSaleWithStatistics(Guid id)
+            => await Task.FromResult(_context.EnterpreneurSales.Where(x => x.Id == id).Include(x => x.Business).SingleOrDefault());
+
+        public async Task<List<int>> GetRatingCount(Guid id)
+            => await Task.FromResult(_context.BusinessesRatings.Where(s => s.Business.Id == id).Select(s => s.Rate).ToList());
     }
 
-    
-
-
-    
 }

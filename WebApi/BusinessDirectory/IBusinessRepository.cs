@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 
 namespace WebApi.BusinessDirectory
 {
-    interface IBusinessRepository
+    public interface IBusinessRepository
     {
+        Task<IEnumerable<Business>> GetBusinesses();
+        Task<Business> GetBusiness(Guid id);
+        Task AddBusiness(Business business);
     }
 }

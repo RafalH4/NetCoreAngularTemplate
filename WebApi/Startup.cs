@@ -19,6 +19,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using WebApi.AwardDirectory;
+using WebApi.BusinessDirectory;
 using WebApi.BusinessRatingsDirectory;
 using WebApi.DataContext;
 using WebApi.EnterpreneurSaleDirectory;
@@ -96,6 +97,9 @@ namespace WebApi
 
             services.AddScoped<IVeteranOrganizationRepository, VeteranOrganizationRepository>();
             services.AddScoped<IVeteranOrganizationService, VeteranOrganizationService>();
+
+            services.AddScoped<IBusinessService, BusinessService>();
+            services.AddScoped<IBusinessRepository, BusinessRepository>();
 
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);

@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201128143357_addEnumToBusiness.cs" />
+    <Compile Remove="Migrations\20201128143357_addEnumToBusiness.Designer.cs" />
+    <Compile Remove="Migrations\20201128145138_addEnumToBusiness.cs" />
+    <Compile Remove="Migrations\20201128145138_addEnumToBusiness.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.0" />

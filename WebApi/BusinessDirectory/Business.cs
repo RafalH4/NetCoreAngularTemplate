@@ -19,6 +19,14 @@ namespace WebApi.BusinessDirectory
         public List<BusinessRatings> BusinessRatings { get; set; }
         public List<EnterpreneurSale> EnterpreneurSales { get; set; }
         public List<Enterpreneur> Enterpreneurs { get; set; }
-
+        public Category Category { get; set; }
+    }
+    public enum Category
+    {
+        Restauracje,
+        Sklepy,
+        Atrakcje,
+        Hotele,
+        Inne
     }
 }

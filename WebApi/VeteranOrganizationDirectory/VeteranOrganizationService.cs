@@ -24,5 +24,23 @@ namespace WebApi.VeteranOrganizationDirectory
             await _veteranOrganizationRepository.AddVeteranToOrganization(addVeteranToOrg);
 
         }
+
+        public async Task<IEnumerable<GetVeteran>> GetVeteransByOrgId(Guid idOrg)
+        {
+            var veteran = await _veteranOrganizationRepository.GetVeteransByOrgId(idOrg);
+            return veteran.Select(veteran => new GetVeteran()
+            {
+                Id = veteran.Id,
+                FirstName = veteran.FirstName,
+                LastName = veteran.LastName,
+                Pesel = veteran.Pesel,
+                VeteranCardNumber = veteran.VeteranCardNumber,
+                AwatarUrl = veteran.AwatarUrl,
+                CreatedAt = veteran.CreatedAt,
+                DamageToHealth = veteran.DamageToHealth,
+                Email = veteran.Email,
+                IsActive = veteran.IsActive,  
+            });
+        }
     }
 }

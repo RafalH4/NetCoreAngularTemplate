@@ -24,5 +24,11 @@ namespace WebApi.VeteranOrganizationDirectory
             await _veteranOrganizationService.AddVeteranToOrganization(addVeteranOrganization);
             return Ok();
         }
+        [HttpGet("getVeteransInOrganization/{idOrg}")]
+        public async Task<IActionResult> GetVeteransByOrgId(Guid idOrg)
+        {
+            var result = await _veteranOrganizationService.GetVeteransByOrgId(idOrg);
+            return Ok(result);
+        }
     }
 }

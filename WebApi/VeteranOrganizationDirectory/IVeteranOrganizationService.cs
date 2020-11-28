@@ -9,5 +9,6 @@ namespace WebApi.VeteranOrganizationDirectory
     public interface IVeteranOrganizationService
     {
         Task AddVeteranToOrganization(AddVeteranOrganization addVeteranAward);
+        Task<IEnumerable<GetVeteran>> GetVeteransByOrgId(Guid idOrg);
     }
 }
