@@ -39,7 +39,7 @@ namespace WebApi.DataContext
             .HasDiscriminator<string>("Role")
             .HasValue<Veteran>("veteran")
             .HasValue<VeteranCenter>("veteransCenter")
-            .HasValue<VeteranCenter>("enterpreneur");
+            .HasValue<Enterpreneur>("enterpreneur");
             builder.Entity<Veteran>().HasMany(s => s.BusinessRatings).WithOne(s => s.Veteran);
         }
     }

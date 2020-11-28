@@ -30,7 +30,7 @@ namespace WebApi.UserDirectory
 
             var hmac = new HMACSHA512();
 
-            var newUser = new Veteran
+            var newUser = new VeteranCenter
             {
                 Id = Guid.NewGuid(),
                 FirstName = userDto.FirstName,
@@ -40,7 +40,7 @@ namespace WebApi.UserDirectory
                 PasswordHash = hmac.ComputeHash(Encoding.ASCII.GetBytes(userDto.Password)),
                 IsActive = false
             };
-            _emailSender.SendConfirmationEmain("Jan", "Kowalski", newUser.Email, newUser.Id);
+            //_emailSender.SendConfirmationEmain("Jan", "Kowalski", newUser.Email, newUser.Id);
             await _userRepository.AddUser(newUser);
         }
         
