@@ -38,7 +38,7 @@ namespace WebApi.UserDirectory
                 Email = userDto.Email,
                 PasswordSalt = hmac.Key,
                 PasswordHash = hmac.ComputeHash(Encoding.ASCII.GetBytes(userDto.Password)),
-                IsActive = false
+                IsActive = true
             };
             //_emailSender.SendConfirmationEmain("Jan", "Kowalski", newUser.Email, newUser.Id);
             await _userRepository.AddUser(newUser);
@@ -60,7 +60,7 @@ namespace WebApi.UserDirectory
                 Email = userDto.Email,
                 PasswordSalt = hmac.Key,
                 PasswordHash = hmac.ComputeHash(Encoding.ASCII.GetBytes(userDto.Password)),
-                IsActive = false
+                IsActive = true
             };
             // _emailSender.SendConfirmationEmain("Jan", "Kowalski", newUser.Email, newUser.Id);
             await _userRepository.AddUser(newUser);
@@ -81,7 +81,7 @@ namespace WebApi.UserDirectory
                 LastName = userDto.LastName,
                 PasswordSalt = hmac.Key,
                 PasswordHash = hmac.ComputeHash(Encoding.ASCII.GetBytes(userDto.Password)),
-                IsActive = false,
+                IsActive = true,
                 Pesel = userDto.Pesel,
                 VeteranCardNumber = userDto.VeteranCardNumber
             };

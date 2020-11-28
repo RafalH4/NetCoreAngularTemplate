@@ -23,8 +23,10 @@ using WebApi.BusinessRatingsDirectory;
 using WebApi.DataContext;
 using WebApi.EnterpreneurSaleDirectory;
 using WebApi.Helpers;
+using WebApi.OrganizationDirectory;
 using WebApi.UserDirectory;
 using WebApi.VeteranAwardDirectory;
+using WebApi.VeteranOrganizationDirectory;
 using WebApi.VeteranSaleDirectory;
 
 namespace WebApi
@@ -88,6 +90,12 @@ namespace WebApi
 
             services.AddScoped<IBusinessRatingsService, BusinessRatingsService>();
             services.AddScoped<IBusinessRatingsRepository, BusinessRatingsRepository>();
+
+            services.AddScoped<IOrganizationService, OrganizationService>();
+            services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+
+            services.AddScoped<IVeteranOrganizationRepository, VeteranOrganizationRepository>();
+            services.AddScoped<IVeteranOrganizationService, VeteranOrganizationService>();
 
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);

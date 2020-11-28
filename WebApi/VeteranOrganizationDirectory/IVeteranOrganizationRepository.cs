@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApi.OrganizationDirectory;
+using WebApi.UserDirectory;
 
 namespace WebApi.VeteranOrganizationDirectory
 {
-    interface IVeteranOrganizationRepository
+    public interface IVeteranOrganizationRepository
     {
+        Task<Organization> GetOrganizationById(Guid id);
+        Task<Veteran> GetVeteranById(Guid id);
+        Task AddVeteranToOrganization(VeteranOrganization vet);
     }
 }

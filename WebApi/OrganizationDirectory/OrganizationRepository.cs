@@ -20,9 +20,7 @@ namespace WebApi.OrganizationDirectory
             await Task.CompletedTask;
         }
 
-        public Task<IEnumerable<Organization>> GetOrganizations()
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<Organization>> GetOrganizations()
+            => await Task.FromResult(_context.Organizations.ToList());
     }
 }
