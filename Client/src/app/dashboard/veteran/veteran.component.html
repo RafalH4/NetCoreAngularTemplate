@@ -17,9 +17,12 @@
                 <div class="dataElement"> {{user.lastName}} </div>
                 <div class="dataElement"> {{user.pesel}} </div>
                 <div class="dataElement"> Akceptuj </div>
-                <div class="dataElement"> <button type="button" class="buttonMore" (click)="test(1)">Więcej</button></div>
+                <div class="dataElement"> <button type="button" class="buttonMore" (click)="test(user.id)">Więcej</button></div>
             </div>
-            <app-veteran-detail *ngIf="detailVeteran==1"></app-veteran-detail>
+            <div class="row2">
+                <app-veteran-detail *ngIf="detailVeteran==user.id"></app-veteran-detail>
+            </div>
+            
         </div>
     </div>
     <div class="tableBlock">
