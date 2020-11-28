@@ -1,0 +1,55 @@
+<div class="homeContainer">
+   
+    <div class="line">
+        <div class="smallBlock">
+            Weterani<br/>
+            <p class="numberOfElements">2200</p>
+            +5 w tym tygodniu
+        </div>
+        <div class="smallBlock">
+            Przedsiębiorcy<br/>
+            <p class="numberOfElements">160</p>
+            +5 w tym tygodniu
+        </div>
+        <div class="smallBlock">
+            Organizacje<br/>
+            <p class="numberOfElements">31</p>
+            +5 w tym tygodniu
+        </div>
+        <div class="smallBlock">
+            Aktualne promocje<br/>
+            <p class="numberOfElements">790</p>
+            +5 w tym tygodniu
+        </div>
+    </div>
+
+<div class="line">
+    <div class="block3z4">
+        Najpopularniejsi przedsiębiorcy
+         <canvas baseChart
+                [colors] = "barChartColors"
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+        </canvas> 
+    </div>
+    <div class="block1z4">
+        Podział weteranów
+        <canvas baseChart
+            [colors] = "doughnutChartColors"
+            [data]="doughnutChartData"
+            [labels]="doughnutChartLabels"
+            [chartType]="doughnutChartType">
+      </canvas>
+      Podział przedsiębiorców
+      <canvas baseChart
+          [colors] = "doughnutChartColors2"
+          [data]="doughnutChartData"
+          [labels]="doughnutChartLabels"
+          [chartType]="doughnutChartType">
+    </canvas>
+    </div>
+</div>
+</div>

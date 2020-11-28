@@ -1,0 +1,48 @@
+    <div class="adminContainer">
+        <div class="adminSidebar">
+            <div class="appTitle">
+               Apka weterana - portal przedsiębiorcy
+            </div>
+            <div class="avatar">
+                <div class="image">
+                    <img src="https://images.pexels.com/photos/2128807/pexels-photo-2128807.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="avatarImage">
+                </div>
+                <div class="userDescription">
+                    Zalogowany jako Piotr Nowak
+                </div>
+            </div>
+            <nav class="menu">
+                <nav class="adminMenu">
+                    <div class="menuElement">
+                        <i class="icon fas fa-home"></i>
+                        <a class="menuLink" routerLink="home" routerLinkActive="active" >Home</a>
+                    </div>
+                    <div class="menuElement">
+                        <i class="icon fas fa-map-marker"></i>
+                        <a class="menuLink" routerLink="veteran" routerLinkActive="active">Placówki</a>
+                    </div>
+                    <div class="menuElement">
+                        <i class="icon fas fa-percent"></i>
+                        <a class="menuLink" routerLink="businessman" routerLinkActive="active">Promocje</a>
+                    </div>
+                    <div class="menuElement">
+                        <i class="icon fas fa-comments"></i>
+                        <a class="menuLink" routerLink="organization" routerLinkActive="active">Opinie</a>
+                    </div>
+                </nav>
+                <nav class="adminBottomMenu">
+                    <div class="menuElement">
+                        <i class="icon fas fa-cogs"></i>
+                        <a class="menuLink" routerLinkActive="active">Ustawienia</a>
+                    </div>
+                    <div class="menuElement">
+                        <i class="icon fas fa-sign-out-alt"></i>
+                        <a class="menuLink" routerLinkActive="active" (click)="logout()"  >Wyloguj</a>
+                    </div>
+                </nav>
+            </nav>
+        </div>
+        <div class="adminContent">
+             <router-outlet></router-outlet> 
+        </div>
+    </div>

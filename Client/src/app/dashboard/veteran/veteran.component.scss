@@ -1,0 +1,63 @@
+.veteranContainer{
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: flex-end ;
+    align-items: flex-end;
+    .tableBlock{
+        width: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        .header{
+            flex: 1;
+            width: 100%;
+            margin-top: 20px;
+            padding: 5px;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            .headerElement{
+                flex: 1;
+                background-color: inherit;
+                color: #44554e;
+                font-size: 0.8rem;
+                font-style: bold;
+            }
+        }
+        .data{
+            flex: 1;
+            width: 100%;
+            margin-top: 10px;
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            background-color: white;
+            .row{
+                background-color: inherit;
+                width: 100%;
+                flex: 1;
+                display: flex;
+                flex-direction: row; 
+                background-color: inherit; 
+                .dataElement{
+                    flex: 1;
+                    background-color: inherit;
+                }
+            }
+        }
+    }
+}
+.buttonMore{
+    padding: 0;
+    border: none;
+    background: none;
+    outline:none;
+    margin-right: 10;
+    font-size: 1rem;
+    color: #1d2624;
+    &:hover{
+        text-decoration: underline;
+    }
+}

@@ -9,6 +9,8 @@ import { JwtHelperService, JwtModule, JWT_OPTIONS } from "@auth0/angular-jwt";
 import { AuthService } from './auth/services/auth.service';
 import { HttpHeaderInterceptor } from './auth/services/ReqInterceptor';
 import { ErrorInterceptorProvider } from './auth/services/ErrorInterceptor';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ChartsModule } from 'ng2-charts';
 
 
 export function jwtOptionsFactory(cookie: CookieService) {
@@ -34,7 +36,10 @@ export function jwtOptionsFactory(cookie: CookieService) {
         useFactory: jwtOptionsFactory,
         deps: [CookieService] 
       }
-    })
+    }),
+    FontAwesomeModule,
+    ChartsModule
+
   ],
   providers: [
     CookieService,

@@ -1,0 +1,99 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    .headerStyle{
+        background-color: inherit;
+        width: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        .logo{
+            background-color: inherit;
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            text-align: center;
+            padding: 20px;
+            img{
+                background-color: white;
+            }
+            h2{
+                background-color: white;
+            }
+        }
+        .searchPanel{
+            background-color: inherit;
+            flex: 3;
+            padding: 20px;
+        }
+    }
+    .content{
+        background-color: inherit;
+        width: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        font-size: 2.5rem;
+
+        .grup{
+            background-color: inherit;
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .element{
+                background-color: inherit;
+                box-shadow: 2px 2px 5px black;
+                width: undefined;
+                position: relative;
+                background-color: white;
+                border-radius: 20px;
+                margin: 20px;
+                padding: 20px;
+                img{
+                    background-color: inherit;
+                }
+                .laur{
+                    display: block;
+                }
+                .shop{
+                    position: absolute;
+                    margin: auto;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                }
+            }
+        }
+    }
+}
+.plusButton{
+    position: fixed;
+    right: 20px;
+    bottom: 100px;
+    background-color: #202f2c;
+    padding: 20px;
+    border-radius: 20px;
+    color: white;
+}
+.searchInput{
+    width: 30vw;
+    border: none;
+    background-color: white;
+    padding: 10px;
+}
+.searchButton{
+    padding: 10px;
+    border: none;
+    background-color: white;
+}
+.linkToLogin{
+    background-color: #202f2c ;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+}

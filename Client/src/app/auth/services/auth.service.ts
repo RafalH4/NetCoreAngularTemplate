@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  baseUrl: string = 'https://localhost:44300/User'
+  baseUrl: string = 'https://localhost:5001/User'
   public currentUser: Observable<User>
 
 

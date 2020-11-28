@@ -1,0 +1,38 @@
+.loginContainer{
+    display: flex;
+    flex-direction:column;
+    width: 100vw;
+    height: 100vh;
+    background-color: #202f2c;
+    justify-content: center;
+}
+.loginPanel{
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px black;
+}
+.elements{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.newAccountPanel{
+    background-color: inherit;
+    color: white;
+    margin-top: 20px;
+}
+input{
+    margin: 5px;
+    padding: 10px;
+    width: 300px;
+}
+button{
+    margin: 5px;
+    padding: 10px;
+    width: 300px;
+    background-color: #331e56;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
