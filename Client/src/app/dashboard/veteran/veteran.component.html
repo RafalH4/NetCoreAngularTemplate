@@ -10,49 +10,16 @@
             <div class="headerElement"> Akcje </div>
         </div>
 
-        <div class="data">
+        <div *ngFor="let user of users; let i = index" class="data">
             <div class="row">
-                <div class="dataElement"> Lp </div>
-                <div class="dataElement"> Imię </div>
-                <div class="dataElement"> Nazwisko </div>
-                <div class="dataElement"> Pesel </div>
+                <div class="dataElement"> {{i+1}} </div>
+                <div class="dataElement"> {{user.firstName}} </div>
+                <div class="dataElement"> {{user.lastName}} </div>
+                <div class="dataElement"> {{user.pesel}} </div>
                 <div class="dataElement"> Akceptuj </div>
                 <div class="dataElement"> <button type="button" class="buttonMore" (click)="test(1)">Więcej</button></div>
             </div>
             <app-veteran-detail *ngIf="detailVeteran==1"></app-veteran-detail>
-        </div>
-        <div class="data">
-            <div class="row">
-                <div class="dataElement"> Lp </div>
-                <div class="dataElement"> Imię </div>
-                <div class="dataElement"> Nazwisko </div>
-                <div class="dataElement"> Pesel </div>
-                <div class="dataElement"> Akceptuj </div>
-                <div class="dataElement"> <button type="button" class="buttonMore" (click)="test(2)">Więcej</button> </div>
-            </div>
-            <app-veteran-detail *ngIf="detailVeteran==2"></app-veteran-detail>
-        </div>
-        <div class="data">
-            <div class="row">
-                <div class="dataElement"> Lp </div>
-                <div class="dataElement"> Imię </div>
-                <div class="dataElement"> Nazwisko </div>
-                <div class="dataElement"> Pesel </div>
-                <div class="dataElement"> Akceptuj </div>
-                <div class="dataElement"> <button type="button" class="buttonMore" (click)="test(3)">Więcej</button> </div>
-            </div>
-            <app-veteran-detail *ngIf="detailVeteran==3"></app-veteran-detail>
-        </div>
-        <div class="data">
-            <div class="row">
-                <div class="dataElement"> Lp </div>
-                <div class="dataElement"> Imię </div>
-                <div class="dataElement"> Nazwisko </div>
-                <div class="dataElement"> Pesel </div>
-                <div class="dataElement"> Akceptuj </div>
-                <div class="dataElement"> <button type="button" class="buttonMore" (click)="test(4)">Więcej</button></div>
-            </div>
-            <app-veteran-detail *ngIf="detailVeteran==4"></app-veteran-detail>
         </div>
     </div>
     <div class="tableBlock">

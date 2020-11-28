@@ -14,14 +14,16 @@ export class VeteranComponent implements OnInit {
   subscription: Subscription;
   detailVeteran = 0;
   users:any
-  
+
   constructor(private ds: VeteranDataServiceService, private userService: UserService) { }
   ngOnInit(): void {
     this.ds.getData().subscribe(x => {
       this.dataPassed = x;
       console.log(x)
     })
-    this.userService.getVeterans().subscribe(x => console.log(x))
+    this.userService.getVeterans().subscribe(x => {
+      this.users = x;
+    })
 
   }
   test(number): void {
