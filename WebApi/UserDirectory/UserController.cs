@@ -50,6 +50,13 @@ namespace WebApi.UserDirectory
             return Ok();
         }
 
+        [HttpPut("activateVeteranCard/{id}")]
+        public async Task<IActionResult> ConfirmAccount(Guid id)
+        {
+            await _userService.ActivateCard(id);
+            return Ok();
+        }
+
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserLoginDto userLogin)
         {

@@ -86,5 +86,11 @@ namespace WebApi.UserDirectory
             await _context.SaveChangesAsync();
             await Task.CompletedTask;
         }
+        public async Task UpdateVeteran(Veteran veteran)
+        {
+            _context.Users.Update(veteran);
+            await _context.SaveChangesAsync();
+            await Task.CompletedTask;
+        }
     }
 }

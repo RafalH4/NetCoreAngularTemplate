@@ -20,5 +20,6 @@ namespace WebApi.UserDirectory
         Task AddFriend(Veteran friend);
         Task<Veteran> GetFriends(Guid id);
         Task<Veteran> GetVeteranWithFriendById(Guid id);
+        Task UpdateVeteran(Veteran veteran);
     }
 }

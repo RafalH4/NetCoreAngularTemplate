@@ -25,5 +25,6 @@ namespace WebApi.UserDirectory
         Task<IEnumerable<GetEnterpreneur>> GetEnterpreneurs(Guid id);
         Task AddFriend(Guid idFriend, Guid idVeteran);
         Task<IEnumerable<GetFriendDto>> GetFriends(Guid id);
+        Task ActivateCard(Guid id);
     }
 }
