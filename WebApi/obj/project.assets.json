@@ -8791,19 +8791,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rhuk\\.nuget\\packages\\": {}
+    "C:\\Users\\Woltimor\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projekty\\Weteran\\Repo\\NetCoreAngularTemplate\\WebApi\\WebApi.csproj",
+      "projectUniqueName": "D:\\Programowanie\\Fork\\NetCoreAngularTemplate\\WebApi\\WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "E:\\Projekty\\Weteran\\Repo\\NetCoreAngularTemplate\\WebApi\\WebApi.csproj",
-      "packagesPath": "C:\\Users\\rhuk\\.nuget\\packages\\",
-      "outputPath": "E:\\Projekty\\Weteran\\Repo\\NetCoreAngularTemplate\\WebApi\\obj\\",
+      "projectPath": "D:\\Programowanie\\Fork\\NetCoreAngularTemplate\\WebApi\\WebApi.csproj",
+      "packagesPath": "C:\\Users\\Woltimor\\.nuget\\packages\\",
+      "outputPath": "D:\\Programowanie\\Fork\\NetCoreAngularTemplate\\WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\rhuk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Woltimor\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8815,6 +8815,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -8826,6 +8827,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNet.WebApi.Core": {
             "target": "Package",
@@ -8892,7 +8894,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   },
@@ -8901,7 +8903,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.WebApi.Core 5.2.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "message": "Pakiet „Microsoft.AspNet.WebApi.Core 5.2.7” został przywrócony przy użyciu elementu „.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8” zamiast platformy docelowej projektu „.NETCoreApp,Version=v3.1”. Ten pakiet może nie być w pełni kompatybilny z Twoim projektem.",
       "libraryId": "Microsoft.AspNet.WebApi.Core",
       "targetGraphs": [
         ".NETCoreApp,Version=v3.1"

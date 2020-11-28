@@ -25,6 +25,17 @@ namespace WebApi.VeteranOrganizationDirectory
 
         }
 
+        public async Task<IEnumerable<GetOrganizationsDto>> GetOrganizations(Guid id)
+        {
+            var organizations = await _veteranOrganizationRepository.GetOrganizations(id);
+            return organizations.Select(organizations => new GetOrganizationsDto()
+            {
+                Address = organizations.Address,
+                OrganizationName = organizations.OrganizationName,
+                PhotoUrl = organizations.PhotoUrl
+            });
+        }
+
         public async Task<IEnumerable<GetVeteran>> GetVeteransByOrgId(Guid idOrg)
         {
             var veteran = await _veteranOrganizationRepository.GetVeteransByOrgId(idOrg);

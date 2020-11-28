@@ -9,5 +9,6 @@ namespace WebApi.VeteranAwardDirectory
     public interface IVeteranAwardService
     {
         Task AddVeteranAward(AddVeteranAward addVeteranAward);
+        Task<IEnumerable<GetAvardsDto>> GetVeteranAvards(Guid id);
     }
 }

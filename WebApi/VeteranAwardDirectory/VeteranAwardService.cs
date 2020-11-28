@@ -23,5 +23,15 @@ namespace WebApi.VeteranAwardDirectory
             await _veteranAwardRepository.AddVeteranAward(veteranAward);
 
         }
+
+        public async Task<IEnumerable<GetAvardsDto>> GetVeteranAvards(Guid id)
+        {
+            var awards = await _veteranAwardRepository.GetVeteranAvards(id);
+            return awards.Select(awards => new GetAvardsDto()
+            {
+                AwardDescription = awards.AwardDescription,
+                UrlPhoto = awards.UrlPhoto
+            });
+        }
     }
 }

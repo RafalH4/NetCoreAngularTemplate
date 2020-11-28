@@ -26,6 +26,9 @@ namespace WebApi.VeteranAwardDirectory
         => await Task.FromResult(_context.Awards.FirstOrDefault(
                 user => user.Id == id));
 
+        public async Task<IEnumerable<Award>> GetVeteranAvards(Guid id)
+            => await Task.FromResult(_context.VeteranAwards.Where(x => x.Veteran.Id == id).Select(s =>s.Award).ToList());
+
         public async Task<Veteran> GetVeteranById(Guid id)
         => await Task.FromResult(_context.Veterans.FirstOrDefault(
                 user => user.Id == id));

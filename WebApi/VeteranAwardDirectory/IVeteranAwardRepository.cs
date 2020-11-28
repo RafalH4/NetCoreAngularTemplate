@@ -12,5 +12,6 @@ namespace WebApi.VeteranAwardDirectory
         Task AddVeteranAward(VeteranAward veteranAward);
         Task<Award> GetAwardById(Guid id);
         Task<Veteran> GetVeteranById(Guid id);
+        Task<IEnumerable<Award>> GetVeteranAvards(Guid id);
     }
 }
