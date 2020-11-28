@@ -36,6 +36,7 @@ namespace WebApi.UserDirectory
                 FirstName = userDto.FirstName,
                 LastName = userDto.LastName,
                 Email = userDto.Email,
+                CreatedAt = DateTime.Now,
                 PasswordSalt = hmac.Key,
                 PasswordHash = hmac.ComputeHash(Encoding.ASCII.GetBytes(userDto.Password)),
                 IsActive = true
@@ -58,6 +59,7 @@ namespace WebApi.UserDirectory
                 FirstName = userDto.FirstName,
                 LastName = userDto.LastName,
                 Email = userDto.Email,
+                CreatedAt = DateTime.Now,
                 PasswordSalt = hmac.Key,
                 PasswordHash = hmac.ComputeHash(Encoding.ASCII.GetBytes(userDto.Password)),
                 IsActive = true
@@ -80,6 +82,8 @@ namespace WebApi.UserDirectory
                 FirstName = userDto.FirstName,
                 LastName = userDto.LastName,
                 PasswordSalt = hmac.Key,
+                CreatedAt = DateTime.Now,
+                isVeteranCardActive = false,
                 PasswordHash = hmac.ComputeHash(Encoding.ASCII.GetBytes(userDto.Password)),
                 IsActive = true,
                 Pesel = userDto.Pesel,
@@ -146,6 +150,7 @@ namespace WebApi.UserDirectory
             return veteran.Select(veteran => new GetVeteran()
             {
                 Id = veteran.Id,
+                isVeteranCardActive = veteran.isVeteranCardActive,
                 Email = veteran.Email,
                 FirstName = veteran.FirstName,
                 LastName = veteran.LastName,
@@ -231,6 +236,13 @@ namespace WebApi.UserDirectory
                 DamageToHealth = friends.DamageToHealth,
                 Email = friends.Email
             });
+        }
+
+        public async Task ActivateCard(Guid id)
+        {
+            var veteran =  _userRepository.GetVeteranById(id).Result;
+            veteran.isVeteranCardActive = true;
+            await _userRepository.UpdateVeteran(veteran);
         }
     }
 }

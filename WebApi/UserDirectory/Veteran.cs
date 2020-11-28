@@ -16,6 +16,7 @@ namespace WebApi.UserDirectory
         public int DamageToHealth { get; set; }
         public long Pesel { get; set; }
         public string VeteranCardNumber { get; set; }
+        public bool isVeteranCardActive { get; set; }
         public List<VeteranOrganization> VeteranOrganizations { get; set; }
         public List<VeteranAward> VeteranAwards { get; set; }
         public List<BusinessRatings> BusinessRatings { get; set; }
