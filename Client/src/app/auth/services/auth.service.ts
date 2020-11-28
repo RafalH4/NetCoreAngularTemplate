@@ -62,6 +62,12 @@ export class AuthService {
     return !this.jwtHelper.isTokenExpired(token);
   }
 
+
+  registerEnterprenuer(model: FormGroup) {
+    return this.http.post(this.baseUrl + '/registerEnterpreneur', model)
+  }
+
+
   hasRole(role: string) {
     const token = this.jwtHelper.decodeToken(this.getToken())
     if(token)

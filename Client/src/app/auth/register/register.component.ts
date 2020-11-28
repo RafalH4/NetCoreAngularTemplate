@@ -19,12 +19,12 @@ export class RegisterComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     })
   }
 
   register(){
-    return this.authService.registerClient(this.form.value).subscribe(resp =>{
+    return this.authService.registerEnterprenuer(this.form.value).subscribe(resp =>{
       console.log(resp)
     })
   }

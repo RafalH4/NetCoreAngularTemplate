@@ -1,4 +1,24 @@
-<form [formGroup]="form">
+<div class="registerContainer">
+    <div class="freePanel">
+    </div>
+    <div class="registerPanel">
+        <form [formGroup]="form" class='elements'>
+                <img src="assets/logo.png" alt="" width="200px"> 
+
+                <input name="firstName" formControlName="firstName" placeholder="Imię">
+                <input name="lastName" formControlName="lastName" placeholder="Nazwisko">
+                <input name="email" formControlName="email"  placeholder="Adres Email">
+                <input name="password" formControlName="password" type="password" placeholder="Hasło">
+                <!-- <input name="password2" formControlName="password2" type="password" placeholder="Hasło"> -->
+                <button class="button button-primary" (click)="register()">Zarejestruj</button>
+                <!-- <button class="button button-primary" (click)="register()">Zarejestruj</button> -->
+        </form>
+    </div>
+</div>
+
+
+
+<!-- <form [formGroup]="form">
     <fieldset>
         <legend>Login</legend>
         <div class="form-field">
@@ -21,5 +41,7 @@
     <div class="form-buttons">
         <button (click)="register()">Register</button>
     </div>
+
+    
     <button *ngIf="isAdmin()" (click)="registerAsAdmin()">Register as admin</button>
-</form>
+</form> -->
