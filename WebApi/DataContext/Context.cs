@@ -48,5 +48,10 @@ namespace WebApi.DataContext
                 .Property(e => e.Category)
                 .HasConversion(converter);
         }
+
+        internal void FromSql(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

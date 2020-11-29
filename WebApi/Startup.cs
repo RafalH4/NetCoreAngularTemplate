@@ -23,6 +23,7 @@ using WebApi.BusinessDirectory;
 using WebApi.BusinessRatingsDirectory;
 using WebApi.DataContext;
 using WebApi.EnterpreneurSaleDirectory;
+using WebApi.GenerateData;
 using WebApi.Helpers;
 using WebApi.OrganizationDirectory;
 using WebApi.UserDirectory;
@@ -100,6 +101,8 @@ namespace WebApi
 
             services.AddScoped<IBusinessService, BusinessService>();
             services.AddScoped<IBusinessRepository, BusinessRepository>();
+
+            services.AddScoped<IGenerateRepository, GenerateRepository>();
 
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
