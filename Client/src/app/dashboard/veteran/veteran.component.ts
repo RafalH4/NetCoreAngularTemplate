@@ -13,7 +13,9 @@ export class VeteranComponent implements OnInit {
   dataPassed: any;
   subscription: Subscription;
   detailVeteran = 0;
-  users:any
+  tableNumber = 0;
+  users:any;
+  unActiveUsers: any;
 
   constructor(private ds: VeteranDataServiceService, private userService: UserService) { }
   ngOnInit(): void {
@@ -23,12 +25,21 @@ export class VeteranComponent implements OnInit {
     this.userService.getVeterans().subscribe(x => {
       this.users = x;
     })
+    this.userService.getVeteransUnactive().subscribe(x => {
+      this.unActiveUsers = x;
+    })
 
   }
-  test(number): void {
+  test(number, table): void {
     if(this.detailVeteran == number)
+    {
       this.detailVeteran = 0
-      else
+      this.tableNumber = 0
+    }
+    else
+    {
       this.detailVeteran = number
+      this.tableNumber=table
+    }
   }
 }

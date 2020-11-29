@@ -15,8 +15,12 @@ export class UserService {
   getVeterans() {
     return this.http.get(this.baseUrl + '/GetAllVeterans')
   }
+  getVeteransUnactive(){
+    return this.http.get(this.baseUrl + '/GetInactiveVeterans')
+  }
   getVeteran(id) {
     return this.http.get(this.baseUrl + '/GetVeteranById/'+id);
   }
+
 
 }

@@ -1,6 +1,32 @@
 <div class="veteranContainer">
     <div class="tableBlock">
-        weterani oczekujący na zatwierdzenie
+        <h2>Weterani oczekujący na zatwierdzenie e-legitymacji</h2>
+        <div class="header">
+            <div class="headerElement"> Lp </div>
+            <div class="headerElement"> Imię </div>
+            <div class="headerElement"> Nazwisko </div>
+            <div class="headerElement"> Pesel </div>
+            <div class="headerElement"> Akceptuj </div>
+            <div class="headerElement"> Akcje </div>
+        </div>
+
+        <div *ngFor="let user of users; let i = index" class="data">
+            <div class="row">
+                <div class="dataElement"> {{i+1}} </div>
+                <div class="dataElement"> {{unActiveUsers.firstName}} </div>
+                <div class="dataElement"> {{unActiveUsers.lastName}} </div>
+                <div class="dataElement"> {{unActiveUsers.pesel}} </div>
+                <div class="dataElement"> Akceptuj </div>
+                <div class="dataElement"> <button type="button" class="buttonMore" (click)="test(user.id, 1)">Więcej</button></div>
+            </div>
+            <div class="row2">
+                <app-veteran-detail *ngIf="detailVeteran==user.id && tableNumber==1" [id]=user.id [user]=user></app-veteran-detail>
+            </div>
+            
+        </div>
+    </div>
+    <div class="tableBlock">
+        <h2>Wszyscy weterani w bazie</h2>
         <div class="header">
             <div class="headerElement"> Lp </div>
             <div class="headerElement"> Imię </div>
@@ -17,14 +43,12 @@
                 <div class="dataElement"> {{user.lastName}} </div>
                 <div class="dataElement"> {{user.pesel}} </div>
                 <div class="dataElement"> Akceptuj </div>
-                <div class="dataElement"> <button type="button" class="buttonMore" (click)="test(user.id)">Więcej</button></div>
+                <div class="dataElement"> <button type="button" class="buttonMore" (click)="test(user.id, 2)">Więcej</button></div>
             </div>
             <div class="row2">
-                <app-veteran-detail *ngIf="detailVeteran==user.id" [id]=user.id [user]=user></app-veteran-detail>
+                <app-veteran-detail *ngIf="detailVeteran==user.id && tableNumber==2 " [id]=user.id [user]=user></app-veteran-detail>
             </div>
             
         </div>
-    </div>
-    <div class="tableBlock">
     </div>
 </div>

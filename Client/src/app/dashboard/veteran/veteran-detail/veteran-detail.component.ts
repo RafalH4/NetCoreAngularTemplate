@@ -21,5 +21,6 @@ export class VeteranDetailComponent implements OnInit {
       this.param = params['id']
       this.ds.sendData(params['id']);
       })
+      console.log(this.user)
   }
 }
