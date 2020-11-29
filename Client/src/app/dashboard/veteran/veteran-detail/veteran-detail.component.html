@@ -1,3 +1,20 @@
 <div class="veteranDetailContainer">
-an nakjdn
+    <div class="personalData">
+        <div class="img">
+            <img src="assets/portraits/man1.jpg" alt="">
+        </div>
+        <div class="data">
+            Imię: <b>{{user.firstName}}</b><br/>
+            Nazwisko: <b>{{user.lastName}}</b><br/>
+            Pesel: <b>{{user.pesel}}</b><br/>
+            Email: <b>{{user.email}}</b><br/>
+            Procent uszczerbku na zdrowiu: <b>{{user.damageToHealth}} %</b><br/>
+            Data rejestracji: <b>{{user.createdAt | date: 'dd/MM/yyyy'}}</b><br/>
+            <button class="btn editButton">Edytuj</button>
+            <button class="btn activeButton">Aktywuj e-legitymacje</button>
+            <button class="btn deleteButton">Usuń</button>
+        </div>
+    </div>
+    <div class="eDocument">
+    </div>
 </div>

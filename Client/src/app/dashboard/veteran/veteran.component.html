@@ -20,7 +20,7 @@
                 <div class="dataElement"> <button type="button" class="buttonMore" (click)="test(user.id)">Więcej</button></div>
             </div>
             <div class="row2">
-                <app-veteran-detail *ngIf="detailVeteran==user.id"></app-veteran-detail>
+                <app-veteran-detail *ngIf="detailVeteran==user.id" [id]=user.id [user]=user></app-veteran-detail>
             </div>
             
         </div>

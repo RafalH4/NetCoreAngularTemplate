@@ -15,4 +15,8 @@ export class UserService {
   getVeterans() {
     return this.http.get(this.baseUrl + '/GetAllVeterans')
   }
+  getVeteran(id) {
+    return this.http.get(this.baseUrl + '/GetVeteranById/'+id);
+  }
+
 }

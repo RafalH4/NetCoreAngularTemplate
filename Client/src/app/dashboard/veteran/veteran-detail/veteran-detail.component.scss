@@ -1,6 +1,52 @@
 .veteranDetailContainer{
-    padding: 20;
+    padding: 20px 0px;
     flex: 1;
     width:100%;
-
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    .personalData{
+        flex: 1;
+        background-color: white;
+        display: flex;
+        flex-direction: row;
+        .data{
+            background-color: white;
+        }
+    }
+    .eDocument{
+        flex: 1;
+        background-color: white;
+    }
+}
+b{
+    background-color: white;
+}
+.btn{
+    height: 30px;
+    padding: 5px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    
+}
+.editButton{
+    &:hover{
+        background-color: #cbcbcb;
+        cursor: pointer;
+    }
+}
+.activeButton{
+    &:hover{
+        background-color: #cbcbcb;
+        cursor: pointer;
+    }
+}
+.deleteButton{
+    background-color: red;
+    color: white;
+    &:hover{
+        background-color: #a70113;
+        cursor: pointer;
+    }
 }

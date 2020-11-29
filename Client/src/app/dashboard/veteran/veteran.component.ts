@@ -19,7 +19,6 @@ export class VeteranComponent implements OnInit {
   ngOnInit(): void {
     this.ds.getData().subscribe(x => {
       this.dataPassed = x;
-      console.log(x)
     })
     this.userService.getVeterans().subscribe(x => {
       this.users = x;

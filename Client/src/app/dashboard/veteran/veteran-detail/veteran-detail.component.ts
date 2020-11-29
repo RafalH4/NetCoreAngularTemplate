@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Output, EventEmitter } from '@angular/core';
 import { VeteranDataServiceService } from '../../services/veteran-data-service.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-veteran-detail',
@@ -11,6 +12,7 @@ import { VeteranDataServiceService } from '../../services/veteran-data-service.s
 export class VeteranDetailComponent implements OnInit {
   @Output() newItemEvent = new EventEmitter<string>();
   param: string = "";
+  @Input() user : any
   constructor(private route: ActivatedRoute, 
     private ds: VeteranDataServiceService) { }
 
@@ -19,8 +21,5 @@ export class VeteranDetailComponent implements OnInit {
       this.param = params['id']
       this.ds.sendData(params['id']);
       })
-
   }
-  
-
 }
