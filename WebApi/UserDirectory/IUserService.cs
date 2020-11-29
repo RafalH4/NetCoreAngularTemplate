@@ -23,7 +23,7 @@ namespace WebApi.UserDirectory
         Task<IEnumerable<GetVeteran>> GetInactiveVeterans();
         Task<GetVeteran> GetVeteran(Guid id);
         Task<IEnumerable<GetEnterpreneur>> GetEnterpreneurs(Guid id);
-        Task AddFriend(Guid idFriend, Guid idVeteran);
+        Task AddFriend(IdDto d);
         Task<IEnumerable<GetFriendDto>> GetFriends(Guid id);
         Task ActivateCard(Guid id);
     }

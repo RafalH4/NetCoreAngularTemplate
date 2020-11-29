@@ -30,6 +30,12 @@ namespace WebApi.BusinessDirectory
             var business = await _businessService.GetBusiness(id);
             return Ok(business);
         }
+        [HttpGet("getBusinessByCategory/{cat}")]
+        public async Task<IActionResult> GetBusinessByCategory(Category cat)
+        {
+            var business = await _businessService.GetBusinessByCategory(cat);
+            return Ok(business);
+        }
         [HttpPost("addBusiness")]
         public async Task<IActionResult> AddBusiness([FromBody] AddBusinessDto addBusinessDto)
         {

@@ -11,5 +11,6 @@ namespace WebApi.BusinessDirectory
         Task<IEnumerable<GetBusinessDto>> GetBusinesses();
         Task<GetBusinessDto> GetBusiness(Guid id);
         Task AddBusiness(AddBusinessDto addBusinessDto);
+        Task<IEnumerable<GetBusinessDto>> GetBusinessByCategory(Category c);
     }
 }

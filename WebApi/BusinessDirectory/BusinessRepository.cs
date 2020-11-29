@@ -24,6 +24,9 @@ namespace WebApi.BusinessDirectory
         public async Task<Business> GetBusiness(Guid id)
         => await Task.FromResult(_context.Businesses.Where(b => b.Id == id).FirstOrDefault());
 
+        public async Task<IEnumerable<Business>> GetBusinessByCategory(Category c)
+        => await Task.FromResult(_context.Businesses.Where(b=>b.Category == c).ToList());
+
         public async Task<IEnumerable<Business>> GetBusinesses()
         => await Task.FromResult(_context.Businesses.ToList());
 

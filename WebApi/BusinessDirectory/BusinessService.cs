@@ -42,6 +42,21 @@ namespace WebApi.BusinessDirectory
             };
         }
 
+        public async Task<IEnumerable<GetBusinessDto>> GetBusinessByCategory(Category c)
+        {
+            var x = await _businessRepository.GetBusinessByCategory(c);
+            return x.Select(x => new GetBusinessDto()
+            {
+                Address = x.Address,
+                BusinessName = x.BusinessName,
+                Category = x.Category,
+                Id = x.Id,
+                Lattitude = x.Lattitude,
+                Longitude = x.Longitude,
+                PhotoUrl = x.PhotoUrl
+            });
+        }
+
         public async Task<IEnumerable<GetBusinessDto>> GetBusinesses()
         {
             var businesses = await _businessRepository.GetBusinesses();

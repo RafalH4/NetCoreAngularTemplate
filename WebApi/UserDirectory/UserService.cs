@@ -214,10 +214,10 @@ namespace WebApi.UserDirectory
             });
         }
 
-        public async Task AddFriend(Guid idF, Guid idV)
+        public async Task AddFriend(IdDto d)
         {
-            var friend = await _userRepository.GetVeteranById(idF);
-            var veteran = await _userRepository.GetVeteranWithFriendById(idV);
+            var friend = await _userRepository.GetVeteranById(d.idFriend);
+            var veteran = await _userRepository.GetVeteranWithFriendById(d.idVeteran);
             if (veteran.Friends.Select(x => x.Id).Contains(friend.Id))
                 throw new Exception("Is your friend already");
             veteran.Friends.Add(friend);

@@ -68,10 +68,9 @@ namespace WebApi.UserDirectory
         }
 
         [HttpPost("addFriend")]
-        public async Task<IActionResult> AddFriend([FromBody] Guid id)
+        public async Task<IActionResult> AddFriend([FromBody] IdDto d)
         {
-            
-            await _userService.AddFriend(id, CurrentUserId);
+            await _userService.AddFriend(d);
             return Ok();
         }
 
