@@ -39,7 +39,7 @@ namespace WebApi.UserDirectory
         }
 
         public async Task<IEnumerable<Veteran>> GetInactiveVeterans()
-         => await Task.FromResult(_context.Veterans.Where(v => v.IsActive == false).ToList());
+         => await Task.FromResult(_context.Veterans.Where(v => v.isVeteranCardActive == false).ToList());
 
         public async Task<User> GetUserByEmail(string email)
             => await Task.FromResult(_context.Users.FirstOrDefault(

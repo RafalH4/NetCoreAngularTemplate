@@ -10,5 +10,6 @@ namespace WebApi.BusinessDirectory
         Task<IEnumerable<Business>> GetBusinesses();
         Task<Business> GetBusiness(Guid id);
         Task AddBusiness(Business business);
+        Task<IEnumerable<Business>> GetBusinessByCategory(Category c);
     }
 }
